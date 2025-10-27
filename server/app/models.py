@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 from datetime import datetime, time
-from typing import Optional, List
+from typing import Optional
 
 from sqlmodel import SQLModel, Field, Relationship
 
@@ -41,7 +39,7 @@ class EmployeeBase(SQLModel):
 
 class Employee(EmployeeBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    assignments: List["ShiftAssignment"] = Relationship(back_populates="employee")
+    assignments: list["ShiftAssignment"] = Relationship(back_populates="employee")
 
 
 class EmployeeCreate(EmployeeBase):
@@ -60,7 +58,7 @@ class TaskBase(SQLModel):
 
 class Task(TaskBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    assignments: List["ShiftAssignment"] = Relationship(back_populates="task")
+    assignments: list["ShiftAssignment"] = Relationship(back_populates="task")
 
 
 class TaskCreate(TaskBase):
@@ -81,7 +79,7 @@ class ShiftBase(SQLModel):
 
 class Shift(ShiftBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    assignments: List["ShiftAssignment"] = Relationship(back_populates="shift")
+    assignments: list["ShiftAssignment"] = Relationship(back_populates="shift")
 
 
 class ShiftCreate(ShiftBase):
